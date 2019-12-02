@@ -53,9 +53,9 @@ function Story({ match, location }) {
                                 {data.story.headline}
                             </Heading>
                             <Box direction="row">
-                                <Text>By: {data.story.by}</Text>
-                                <Text>Date: {data.story.date}</Text>
-
+                                <Text style={{padding: "1vw"}} >By: {data.story.by}</Text>
+                                <Text style={{padding: "1vw"}} >Date: {data.story.date}</Text>
+                                <Anchor style={{padding: "1vw"}} target="__blank" href={data.story.href} label="Original Story" />
                             </Box>
                         </Box>
                     )
