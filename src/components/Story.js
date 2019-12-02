@@ -62,8 +62,8 @@ function Story({ match, location }) {
                                     {data.story.content.join('')}
                                 </Paragraph>
                             </Box>
-                            <Box border>
-                                    {data.story.tags.join(',').map((x) => <Text>x</Text>)}
+                            <Box >
+                                {data.story.tags.map((x) => <Box border> <Text>{x}</Text> </Box>)}
                             </Box>
                         </Box>
                     )
