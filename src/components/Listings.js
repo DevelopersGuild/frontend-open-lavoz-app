@@ -48,13 +48,13 @@ function Listings() {
                             if (loading) return <div>Fetching</div>
                             if (error) return <div>Error</div>
                             return (
-                                <InfiniteScroll items={data.links}>
-                                    {(item, key) => (
-                                        <Box key={key} >
+                                <Box align="start" justify="start" key={key} >
+                                    <InfiniteScroll items={data.links}>
+                                        {(item, key) => (
                                             <Anchor href={item.href} label={item.content} />
-                                        </Box>
-                                    )}
-                                </InfiniteScroll>
+                                        )}
+                                    </InfiniteScroll>
+                                </Box>
                             )
                         }}
                     </Query>
