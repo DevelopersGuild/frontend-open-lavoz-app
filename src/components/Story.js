@@ -16,6 +16,11 @@ function Story({ match, location }) {
                             src="https://media.giphy.com/media/a9xhxAxaqOfQs/giphy.gif"
                         />
                     </Box>
+                    <br/>
+                    <Text>
+                        Maybe try putting a href tag in the url query parameters 
+                        or try searching on the main page.
+                    </Text>
                 </Box>
             </Grommet>
         )
