@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Grommet, grommet, Box, Heading, InfiniteScroll, Text, Anchor, TextInput, FormField } from 'grommet';
-import { AppBar, Toolbar, Typography, List, ListItem, ListItemText, Divider } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 
 const GET_LINKS = (page = 2) => gql`
@@ -60,15 +60,13 @@ function Listings() {
                             if (error) return <div>Error</div>
                             return (
                                 <Box align="start" justify="start">
-                                    <List>
-                                        <InfiniteScroll items={data.links}>
-                                            {(item, key) => (
-                                                <Anchor onClick={() => {
-                                                    history.push(`/story?href=${item.href}`)
-                                                }} key={key} label={item.content} size="large" />
-                                            )}
-                                        </InfiniteScroll>
-                                    </List>
+                                    <InfiniteScroll items={data.links}>
+                                        {(item, key) => (
+                                            <Anchor onClick={() => {
+                                                history.push(`/story?href=${item.href}`)
+                                            }} key={key} label={item.content} size="large" />
+                                        )}
+                                    </InfiniteScroll>
                                 </Box>
                             )
                         }}
