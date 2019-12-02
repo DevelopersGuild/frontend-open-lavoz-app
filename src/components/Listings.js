@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Grommet, grommet, Box, Heading, InfiniteScroll, Text, Anchor, TextInput, FormField } from 'grommet';
-
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 
 const GET_LINKS = (page = 2) => gql`
@@ -25,7 +25,16 @@ function Listings() {
     const history = useHistory();
     const [page, setPage] = React.useState(2);
     return (
-        <Grommet theme={grommet} >
+        <Grommet full theme={grommet} >
+              <Box fill="horizontal" >
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography variant="h6">
+                                Open La Voz
+                        </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </Box>
             <Box align="center" justify="center" >
                 <Heading>Stories</Heading>
                 <Box pad="medium" align="center" justify="center" size="medium" direction="row" >

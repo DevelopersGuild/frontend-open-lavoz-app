@@ -3,7 +3,7 @@ import queryString from "query-string";
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Grommet, grommet, Text, Box, Heading, Image, Anchor, Paragraph } from 'grommet';
-
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 const GET_STORY = (href) => gql`
 {
@@ -23,8 +23,17 @@ function Story({ match, location }) {
 
     if (!HREF) {
         return (
-            <Grommet theme={grommet} >
-                <Box fill align="center" justify="center" >
+            <Grommet full theme={grommet} >
+                <Box fill="horizontal" >
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography variant="h6">
+                                Open La Voz
+                        </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </Box>
+                <Box align="center" justify="center" >
                     <Heading>Story not found.</Heading>
                     <Box height="medium" width="medium">
                         <Image
@@ -42,13 +51,13 @@ function Story({ match, location }) {
         )
     }
     return (
-        <Grommet theme={grommet} >
+        <Grommet full theme={grommet} >
             <Query query={GET_STORY(HREF)} >
                 {({ loading, error, data }) => {
                     if (loading) return <div>Fetching</div>
                     if (error) return <div>Error</div>
                     return (
-                        <Box fill align="center" justify="center" >
+                        <Box align="center" justify="center" >
                             <Heading size="small">
                                 {data.story.headline}
                             </Heading>
