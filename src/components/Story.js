@@ -4,6 +4,20 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Grommet, grommet, Text, Box, Heading, Image } from 'grommet';
 
+
+const GET_STORY = (href) => gql`
+   {
+        story(url:${href}){
+        headline
+        by
+        date
+        tags
+        content
+        href
+  }
+}
+`;
+
 function Story({ match, location }) {
     const HREF = queryString.parse(location.search).href;
 
@@ -18,9 +32,9 @@ function Story({ match, location }) {
                             src="https://media.giphy.com/media/a9xhxAxaqOfQs/giphy.gif"
                         />
                     </Box>
-                    <br/>
+                    <br />
                     <Text>
-                        Maybe try putting a href tag in the url query parameters 
+                        Maybe try putting a href tag in the url query parameters
                         or try searching on the main page.
                     </Text>
                 </Box>
