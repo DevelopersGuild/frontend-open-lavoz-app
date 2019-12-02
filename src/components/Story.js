@@ -2,7 +2,7 @@ import React from 'react';
 import queryString from "query-string";
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import { Grommet, grommet, Text, Box, Heading, Image } from 'grommet';
+import { Grommet, grommet, Text, Box, Heading, Image,Anchor} from 'grommet';
 
 
 const GET_STORY = (href) => gql`
@@ -55,6 +55,7 @@ function Story({ match, location }) {
                             <Box direction="row">
                                 <Text>By: {data.story.by}</Text>
                                 <Text>Date: {data.story.date}</Text>
+                                
                             </Box>
                         </Box>
                     )
