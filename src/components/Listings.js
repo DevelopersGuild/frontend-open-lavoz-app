@@ -83,7 +83,7 @@ function Listings() {
                                                                             .then(x => {
                                                                                 return (
                                                                                     <React.Fragment>
-                                                                                        {getMetadata(x, item.href)}
+                                                                                        {JSON.stringify(getMetadata(x, item.href))}
                                                                                     </React.Fragment>
                                                                                 )
                                                                             })
