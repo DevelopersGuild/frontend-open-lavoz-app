@@ -1,4 +1,5 @@
 import React from 'react';
+import {}
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Grommet, grommet, Box, Heading, InfiniteScroll, Text, Anchor, TextInput, FormField } from 'grommet';
@@ -48,10 +49,12 @@ function Listings() {
                             if (loading) return <div>Fetching</div>
                             if (error) return <div>Error</div>
                             return (
-                                <Box align="start" justify="start" key={key} >
+                                <Box align="start" justify="start">
                                     <InfiniteScroll items={data.links}>
                                         {(item, key) => (
-                                            <Anchor href={item.href} label={item.content} />
+                                            <Anchor onClick={() => {
+                                                alert(item.href)
+                                            }} key={key} label={item.content} size="large" />
                                         )}
                                     </InfiniteScroll>
                                 </Box>
