@@ -3,7 +3,7 @@ import queryString from "query-string";
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Grommet, grommet, Text, Box, Heading, Image, Anchor, Paragraph } from 'grommet';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Chip } from '@material-ui/core';
 
 const GET_STORY = (href) => gql`
 {
@@ -71,7 +71,7 @@ function Story({ match, location }) {
                                 {data.story.headline}
                             </Heading>
                             <Box wrap direction="row">
-                                <Text style={{ padding: "1vw" }} >By: { data.story.by.trim().length > 0 ? data.story.by : 'Unknown Contributor'}</Text>
+                                <Text style={{ padding: "1vw" }} >By: {data.story.by.trim().length > 0 ? data.story.by : 'Unknown Contributor'}</Text>
                                 <Text style={{ padding: "1vw" }} >Date: {data.story.date}</Text>
                                 <Anchor style={{ padding: "1vw" }} target="__blank" href={data.story.href} label="Original Story" />
                             </Box>
@@ -81,7 +81,7 @@ function Story({ match, location }) {
                                 </Paragraph>
                             </Box>
                             <Box wrap direction="row">
-                                {data.story.tags.map((x, key) => <Box key={key} round border margin="small" pad="xsmall" > <Text size="small">{x}</Text> </Box>)}
+                                {data.story.tags.map((x, key) => <Chip onClick={() => { window.open(`https://lavozdeanza.com/tag/${x}`, '__blank') }} clickable style={{ marginRight: "0.5vw", marginLeft: "0.5vw" }} key={key} label={x} />)}
                             </Box>
                         </Box>
                     )
