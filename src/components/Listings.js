@@ -73,12 +73,23 @@ function Listings() {
                                                                     history.push(`/story?href=${item.href}`)
                                                                 }} key={key} label={item.content} size="medium" />
                                                             </React.Fragment>
-                                                        } 
-                                                        secondary={
-                                                            <React.Fragment>
-                                                                {}
-                                                            </React.Fragment>
                                                         }
+                                                            secondary={
+                                                                <React.Fragment>
+                                                                    {() => {
+                                                                        fetch(item.href)
+                                                                            .then(x => x.text())
+                                                                            .then(x => domino.createWindow(x).document)
+                                                                            .then(x => {
+                                                                                return (
+                                                                                    <React.Fragment>
+                                                                                        {getMetadata(x, item.href)}
+                                                                                    </React.Fragment>
+                                                                                )
+                                                                            })
+                                                                    }}
+                                                                </React.Fragment>
+                                                            }
                                                         />
                                                     </ListItem>
                                                     <Divider component="li" />
