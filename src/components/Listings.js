@@ -1,13 +1,22 @@
 import React from 'react';
+import gql from 'graphql-tag'
 import { Grommet, grommet, Box, Heading, InfiniteScroll, Text } from 'grommet';
+
+
+// const GET_LINKS = (page = 2) => gql`
+//     {
+//         links(index:${page}){
+//             href
+//             content
+//         }
+//     }
+// `;
 
 function Listings() {
 
     const [stories, setStories] = React.useState([]);
 
-    React.useEffect(() => {
 
-    }, [])
 
     return (
         <Grommet theme={grommet} >
