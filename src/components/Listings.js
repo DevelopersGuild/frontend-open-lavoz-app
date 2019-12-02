@@ -1,16 +1,18 @@
 import React from 'react';
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 import { Grommet, grommet, Box, Heading, InfiniteScroll, Text } from 'grommet';
 
 
-// const GET_LINKS = (page = 2) => gql`
-//     {
-//         links(index:${page}){
-//             href
-//             content
-//         }
-//     }
-// `;
+
+const GET_LINKS = (page = 2) => gql`
+    {
+        links(index:${page}){
+            href
+            content
+        }
+    }
+`;
 
 function Listings() {
 
