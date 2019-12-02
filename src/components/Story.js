@@ -43,9 +43,17 @@ function Story({ match, location }) {
     }
     return (
         <Grommet theme={grommet} >
-            <Text>
-                {HREF}
-            </Text>
+            <Query query={GET_STORY(HREF)} >
+                {({ loading, error, data }) => {
+                    if (loading) return <div>Fetching</div>
+                    if (error) return <div>Error</div>
+                    return(
+                        <Text>
+                            {data.headline}
+                        </Text>
+                    )
+                }}
+            </Query>
         </Grommet>
     )
 }
