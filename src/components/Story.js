@@ -57,10 +57,15 @@ function Story({ match, location }) {
                                 <Text style={{ padding: "1vw" }} >Date: {data.story.date}</Text>
                                 <Anchor style={{ padding: "1vw" }} target="__blank" href={data.story.href} label="Original Story" />
                             </Box>
-                            <Box pad="medium" align="center" justify="center" >
+                            <Box pad="large" align="center" justify="center" >
                                 <Paragraph fill size="large" margin="none" textAlign="center">
                                     {data.story.content.join('')}
                                 </Paragraph>
+                            </Box>
+                            <Box border>
+                                <Text>
+                                    {data.story.tags.join(',')}
+                                </Text>
                             </Box>
                         </Box>
                     )
