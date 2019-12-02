@@ -10,7 +10,7 @@ function Story({ match, location }) {
             <Grommet theme={grommet} >
                 <Box fill align="center" justify="center" >
                     <Heading>Story not found.</Heading>
-                    <Box height="medium" width="medium">
+                    <Box height="large" width="large">
                         <Image
                             fit="cover"
                             src="https://media.giphy.com/media/a9xhxAxaqOfQs/giphy.gif"
