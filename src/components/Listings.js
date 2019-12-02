@@ -54,7 +54,7 @@ function Listings() {
                                     <InfiniteScroll items={data.links}>
                                         {(item, key) => (
                                             <Anchor onClick={() => {
-                                                alert(item.href)
+                                                history.push(`/story?href=${item.href}`)
                                             }} key={key} label={item.content} size="large" />
                                         )}
                                     </InfiniteScroll>
