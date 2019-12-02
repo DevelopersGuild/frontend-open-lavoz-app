@@ -1,5 +1,5 @@
 import React from 'react';
-import {}
+import { useHistory } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Grommet, grommet, Box, Heading, InfiniteScroll, Text, Anchor, TextInput, FormField } from 'grommet';
@@ -22,6 +22,7 @@ const GET_PAGES = gql`
 `;
 
 function Listings() {
+    const history = useHistory();
     const [page, setPage] = React.useState(2);
     return (
         <Grommet theme={grommet} >
