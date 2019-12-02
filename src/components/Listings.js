@@ -32,7 +32,7 @@ function Listings() {
                             if (loading) return <div>Fetching</div>
                             if (error) return <div>Error</div>
                             return (
-                                <Text style={{paddingRight: "5vw"}}>
+                                <Text style={{ paddingRight: "5vw" }}>
                                     Indexes: {data.pages}
                                 </Text>
                             )
