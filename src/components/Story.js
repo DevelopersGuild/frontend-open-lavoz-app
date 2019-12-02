@@ -52,6 +52,15 @@ function Story({ match, location }) {
     }
     return (
         <Grommet full theme={grommet} >
+              <Box fill="horizontal" >
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography variant="h6">
+                                Open La Voz
+                        </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </Box>
             <Query query={GET_STORY(HREF)} >
                 {({ loading, error, data }) => {
                     if (loading) return <div>Fetching</div>
