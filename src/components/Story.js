@@ -52,18 +52,18 @@ function Story({ match, location }) {
                             <Heading size="small">
                                 {data.story.headline}
                             </Heading>
-                            <Box direction="row">
+                            <Box wrap direction="row">
                                 <Text style={{ padding: "1vw" }} >By: {data.story.by}</Text>
                                 <Text style={{ padding: "1vw" }} >Date: {data.story.date}</Text>
                                 <Anchor style={{ padding: "1vw" }} target="__blank" href={data.story.href} label="Original Story" />
                             </Box>
                             <Box pad="large" align="center" justify="center" >
-                                <Paragraph fill size="large" margin="none" textAlign="center">
+                                <Paragraph fill size="medium" margin="none" textAlign="center">
                                     {data.story.content.join('')}
                                 </Paragraph>
                             </Box>
-                            <Box >
-                                {data.story.tags.map((x) => <Box border> <Text>{x}</Text> </Box>)}
+                            <Box wrap direction="row">
+                                {data.story.tags.map((x, key) => <Box key={key} round border margin="small" pad="xsmall" > <Text size="small">{x}</Text> </Box>)}
                             </Box>
                         </Box>
                     )
