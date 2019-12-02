@@ -1,7 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import { Grommet, grommet, Box, Heading, InfiniteScroll, Text } from 'grommet';
+import { Grommet, grommet, Box, Heading, InfiniteScroll, Text, Anchor, TextInput, FormField } from 'grommet';
 
 
 
@@ -14,22 +14,50 @@ const GET_LINKS = (page = 2) => gql`
     }
 `;
 
+const GET_PAGES = gql`
+    {
+        pages
+    }
+`;
+
 function Listings() {
-
-    const [stories, setStories] = React.useState([]);
-
-
-
+    const [page, setPage] = React.useState(2);
     return (
         <Grommet theme={grommet} >
             <Box align="center" justify="center" >
                 <Heading>Stories</Heading>
+                <Box pad="medium" align="center" justify="center" size="medium" direction="row" >
+                    <Query query={GET_PAGES} >
+                        {({ loading, error, data }) => {
+                            if (loading) return <div>Fetching</div>
+                            if (error) return <div>Error</div>
+                            return (
+                                <Text style={{paddingRight: "5vw"}}>
+                                    Indexes: {data.pages}
+                                </Text>
+                            )
+                        }}
+                    </Query>
+                    <FormField label="Search Index" >
+                        <TextInput size="small" value={page} onChange={(e) => setPage(e.target.value)} />
+                    </FormField>
+                </Box>
                 <Box size="medium" overflow="auto" align="center" justify="center">
-                    <InfiniteScroll items={stories}>
-                        {(item) => (
-                            <Text>{item}</Text>
-                        )}
-                    </InfiniteScroll>
+                    <Query query={GET_LINKS(page || 2)} >
+                        {({ loading, error, data }) => {
+                            if (loading) return <div>Fetching</div>
+                            if (error) return <div>Error</div>
+                            return (
+                                <InfiniteScroll items={data.links}>
+                                    {(item, key) => (
+                                        <Box key={key} >
+                                            <Anchor href={item.href} label={item.content} />
+                                        </Box>
+                                    )}
+                                </InfiniteScroll>
+                            )
+                        }}
+                    </Query>
                 </Box>
             </Box>
         </Grommet>
