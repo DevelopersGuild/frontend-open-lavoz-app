@@ -1,5 +1,7 @@
 import React from 'react';
-import queryString from "query-string"
+import queryString from "query-string";
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 import { Grommet, grommet, Text, Box, Heading, Image } from 'grommet';
 
 function Story({ match, location }) {
