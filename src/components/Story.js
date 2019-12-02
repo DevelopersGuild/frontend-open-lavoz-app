@@ -6,15 +6,15 @@ import { Grommet, grommet, Text, Box, Heading, Image } from 'grommet';
 
 
 const GET_STORY = (href) => gql`
-   {
-        story(url:${href}){
-        headline
-        by
-        date
-        tags
-        content
-        href
-  }
+{
+        story(url:"${href}"){
+            headline
+            by
+            date
+            tags
+            content
+            href
+        }
 }
 `;
 
@@ -47,10 +47,16 @@ function Story({ match, location }) {
                 {({ loading, error, data }) => {
                     if (loading) return <div>Fetching</div>
                     if (error) return <div>Error</div>
-                    return(
-                        <Text>
-                            {data.headline}
-                        </Text>
+                    return (
+                        <Box fill align="center" justify="center" >
+                            <Heading size="small">
+                                {data.story.headline}
+                            </Heading>
+                            <Box direction="row">
+                                <Text>By: {data.story.by}</Text>
+                                <Text>Date: {data.story.date}</Text>
+                            </Box>
+                        </Box>
                     )
                 }}
             </Query>
