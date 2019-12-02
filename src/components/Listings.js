@@ -2,8 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import { getMetadata } from 'page-metadata-parser';
-import domino from 'domino';
 import { Grommet, grommet, Box, Heading, InfiniteScroll, Text, Anchor, TextInput, FormField } from 'grommet';
 import { AppBar, Toolbar, Typography, List, ListItem, ListItemText, Divider } from '@material-ui/core';
 
@@ -65,35 +63,9 @@ function Listings() {
                                     <List>
                                         <InfiniteScroll items={data.links}>
                                             {(item, key) => (
-                                                <React.Fragment>
-                                                    <ListItem alignItems="flex-start">
-                                                        <ListItemText primary={
-                                                            <React.Fragment>
-                                                                <Anchor onClick={() => {
-                                                                    history.push(`/story?href=${item.href}`)
-                                                                }} key={key} label={item.content} size="medium" />
-                                                            </React.Fragment>
-                                                        }
-                                                            secondary={
-                                                                <React.Fragment>
-                                                                    {() => {
-                                                                        fetch(item.href)
-                                                                            .then(x => x.text())
-                                                                            .then(x => domino.createWindow(x).document)
-                                                                            .then(x => {
-                                                                                return (
-                                                                                    <React.Fragment>
-                                                                                        {JSON.stringify(getMetadata(x, item.href))}
-                                                                                    </React.Fragment>
-                                                                                )
-                                                                            })
-                                                                    }}
-                                                                </React.Fragment>
-                                                            }
-                                                        />
-                                                    </ListItem>
-                                                    <Divider component="li" />
-                                                </React.Fragment>
+                                                <Anchor onClick={() => {
+                                                    history.push(`/story?href=${item.href}`)
+                                                }} key={key} label={item.content} size="large" />
                                             )}
                                         </InfiniteScroll>
                                     </List>
