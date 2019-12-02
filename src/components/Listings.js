@@ -26,15 +26,15 @@ function Listings() {
     const [page, setPage] = React.useState(2);
     return (
         <Grommet full theme={grommet} >
-              <Box fill="horizontal" >
-                    <AppBar position="static">
-                        <Toolbar>
-                            <Typography variant="h6">
-                                Open La Voz
+            <Box fill="horizontal" >
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="h6">
+                            Open La Voz
                         </Typography>
-                        </Toolbar>
-                    </AppBar>
-                </Box>
+                    </Toolbar>
+                </AppBar>
+            </Box>
             <Box align="center" justify="center" >
                 <Heading>Stories</Heading>
                 <Box pad="medium" align="center" justify="center" size="medium" direction="row" >
