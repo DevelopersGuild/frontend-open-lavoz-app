@@ -2,7 +2,7 @@ import React from 'react';
 import queryString from "query-string";
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import { Grommet, grommet, Text, Box, Heading, Image, Anchor } from 'grommet';
+import { Grommet, grommet, Text, Box, Heading, Image, Anchor, Paragraph } from 'grommet';
 
 
 const GET_STORY = (href) => gql`
