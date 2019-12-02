@@ -1,15 +1,21 @@
 import React from 'react';
 import queryString from "query-string"
-import { Grommet, grommet, Text, Box, Heading } from 'grommet';
+import { Grommet, grommet, Text, Box, Heading, Image } from 'grommet';
 
 function Story({ match, location }) {
     const HREF = queryString.parse(location.search).href;
 
-    if(!HREF) {
-        return(
+    if (!HREF) {
+        return (
             <Grommet theme={grommet} >
-                <Box align="center" justify="center" >
-                    <Heading>No Story in url query.</Heading>
+                <Box fill align="center" justify="center" >
+                    <Heading>Story not found.</Heading>
+                    <Box height="medium" width="medium">
+                        <Image
+                            fit="cover"
+                            src="https://media.giphy.com/media/a9xhxAxaqOfQs/giphy.gif"
+                        />
+                    </Box>
                 </Box>
             </Grommet>
         )
