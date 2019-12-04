@@ -43,14 +43,14 @@ function Listings() {
                             if (loading) return <div>Fetching</div>
                             if (error) return <div>Error</div>
                             return (
-                                <Text aria-label={`There are ${data.pages} indexes of stories`} style={{ paddingRight: "5vw" }}>
+                                <Text aria-label={`There are ${data.pages} indexes of stories.`} style={{ paddingRight: "5vw" }}>
                                     Indexes: {data.pages}
                                 </Text>
                             )
                         }}
                     </Query>
                     <FormField label="Search Index" >
-                        <TextInput size="small" value={page} onChange={(e) => setPage(e.target.value)} />
+                        <TextInput type="number" aria-label={`enter the pages you want to search through for stories. currently we're on index ${page}.`} size="small" value={page} onChange={(e) => setPage(e.target.value)} />
                     </FormField>
                 </Box>
                 <Box size="medium" overflow="auto" align="center" justify="center">
@@ -59,12 +59,12 @@ function Listings() {
                             if (loading) return <div>Fetching</div>
                             if (error) return <div>Error</div>
                             return (
-                                <Box align="start" justify="start">
+                                <Box aria-label="Search Results List" align="start" justify="start">
                                     <InfiniteScroll items={data.links}>
                                         {(item, key) => (
                                             <Anchor onClick={() => {
                                                 history.push(`/story?href=${item.href}`)
-                                            }} key={key} label={item.content} size="large" />
+                                            }} aria-label={`Link to ${item.content}`} key={key} label={item.content} size="large" />
                                         )}
                                     </InfiniteScroll>
                                 </Box>
