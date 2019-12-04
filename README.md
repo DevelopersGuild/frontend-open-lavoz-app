@@ -12,7 +12,7 @@ savvy client with no trackers or cookies.
 
 ###### Accessibility Features
 Features include rich descriptions,
-content and interactivty for screen readers like Chrome Vox. 
+content and interactivity for screen readers like Chrome Vox. 
 <div width="5vw">
 <img src="./demo/1.png" alt="image one"/>
 <img src="./demo/2.png" alt="image two"/>
