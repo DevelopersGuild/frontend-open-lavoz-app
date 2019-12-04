@@ -35,9 +35,10 @@ function Story({ match, location }) {
                     </AppBar>
                 </Box>
                 <Box align="center" justify="center" >
-                    <Heading>Story not found.</Heading>
+                    <Heading aria-label='The story you are searching for does not exist.' >Story not found.</Heading>
                     <Box height="medium" width="medium">
                         <Image
+                            aria-label="Image of human subject sitting in rain. they appear sad. this is a 404 page."
                             fit="cover"
                             src="https://media.giphy.com/media/a9xhxAxaqOfQs/giphy.gif"
                         />
@@ -68,24 +69,24 @@ function Story({ match, location }) {
                     if (error) return <div>Error</div>
                     return (
                         <Box align="center" justify="center" >
-                            <Heading a11yTitle={`The Story Headline is ${data.story.headline}`} size="small">
+                            <Heading aria-label={`The Story Headline is ${data.story.headline}`} size="small">
                                 {data.story.headline}
                             </Heading>
-                            <Box wrap direction="row">
-                                <Text a11yTitle={`Story Written by ${data.story.by.trim().length > 0 ? data.story.by : 'Unknown Contributor'}`} style={{ padding: "1vw" }} >By: {data.story.by.trim().length > 0 ? data.story.by : 'Unknown Contributor'}</Text>
-                                <Text a11yTitle={`Date ${data.story.date}`} style={{ padding: "1vw" }} >Date: {data.story.date}</Text>
-                                <Anchor style={{ padding: "1vw" }} target="__blank" href={data.story.href} label="Original Story" />
-                                <Button a11yTitle="Facebook Sharing Button" size="small" style={{ margin: "1vw" }} startIcon={<Facebook />} variant="contained" color="default" onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${HREF}`)}>
+                            <Box aria-label="Story Specific Action Menu" wrap direction="row">
+                                <Text aria-label={`Story Written by ${data.story.by.trim().length > 0 ? data.story.by : 'Unknown Contributor'}`} style={{ padding: "1vw" }} >By: {data.story.by.trim().length > 0 ? data.story.by : 'Unknown Contributor'}</Text>
+                                <Text aria-label={`Date ${data.story.date}`} style={{ padding: "1vw" }} >Date: {data.story.date}</Text>
+                                <Anchor aria-label={'Original Story Link'} style={{ padding: "1vw" }} target="__blank" href={data.story.href} label="Original Story" />
+                                <Button aria-label="Facebook Sharing Button" size="small" style={{ margin: "1vw" }} startIcon={<Facebook/>} variant="contained" color="default" onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${HREF}`)}>
                                     Share on Facebook
                                 </Button>
-                                <Button a11yTitle="Twitter Sharing Button" size="small" style={{ margin: "1vw" }} startIcon={<Twitter />} variant="contained" color="default" onClick={() => window.open(`https://twitter.com/intent/tweet?text=${data.story.headline}${" via Open La Voz"}&url=${HREF}`)}>
+                                <Button aria-label="Twitter Sharing Button" size="small" style={{ margin: "1vw" }} startIcon={<Twitter/>} variant="contained" color="default" onClick={() => window.open(`https://twitter.com/intent/tweet?text=${data.story.headline}${" via Open La Voz"}&url=${HREF}`)}>
                                     Share on Twitter
                                 </Button>
                             </Box>
                             <Box pad="large" align="start" justify="center" >
-                                {data.story.content.map((text, index) => (<Paragraph key={index} a11yTitle={text} responsive fill size="medium" margin="xsmall" textAlign="start" >{text}</Paragraph>))}
+                                {data.story.content.map((text, index) => (<Paragraph key={index} aria-label={text} responsive fill size="medium" margin="xsmall" textAlign="start" >{text}</Paragraph>))}
                             </Box>
-                            <Box a11yTitle="Story Tags Box" wrap direction="row">
+                            <Box aria-label="Story Tags Box" wrap direction="row">
                                 {data.story.tags.map((x, key) => <Chip aria-label={`tag ${x}`} onClick={() => { window.open(`https://lavozdeanza.com/tag/${x.replace(/\s+/g, '-').toLowerCase()}`, '__blank') }} clickable style={{ marginRight: "0.5vw", marginLeft: "0.5vw" }} key={key} label={x} />)}
                             </Box>
                         </Box>
