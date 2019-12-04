@@ -43,7 +43,7 @@ function Listings() {
                             if (loading) return <div>Fetching</div>
                             if (error) return <div>Error</div>
                             return (
-                                <Text style={{ paddingRight: "5vw" }}>
+                                <Text aria-label={`There are ${data.pages} indexes of stories`} style={{ paddingRight: "5vw" }}>
                                     Indexes: {data.pages}
                                 </Text>
                             )
